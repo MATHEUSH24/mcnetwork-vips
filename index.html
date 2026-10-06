@@ -3,308 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MCNetwork (MultiCraft) - Loja Oficial</title>
+    <title>MCNETWORK - Loja Oficial</title>
     <style>
         * { box-sizing: border-box; }
-        body { 
-            background-color: #0b0f19; 
-            color: #ffffff; 
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-            margin: 0; 
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-        .container {
-            width: 100%;
-            max-width: 460px;
-            background: #121826;
-            border-radius: 16px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
-            border: 1px solid #1e293b;
-            overflow: hidden;
-        }
-        .header {
-            background: linear-gradient(135deg, #1e293b, #0f172a);
-            padding: 25px 20px;
-            text-align: center;
-            border-bottom: 1px solid #1e293b;
-            position: relative;
-        }
-        .header::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #22c55e, #3b82f6);
-        }
-        h1 {
-            margin: 0;
-            font-size: 24px;
-            color: #22c55e;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-        }
-        .subtitle {
-            font-size: 13px;
-            color: #94a3b8;
-            margin-top: 5px;
-        }
-        .content {
-            padding: 25px;
-        }
-        label {
-            font-size: 12px;
-            color: #cbd5e1;
-            display: block;
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-        input {
-            width: 100%;
-            padding: 12px 14px;
-            margin-bottom: 16px;
-            background-color: #0b0f19;
-            border: 1px solid #334155;
+        body {
+            background-color: #121212;
             color: #ffffff;
-            border-radius: 8px;
-            font-size: 14px;
-            transition: border-color 0.2s;
-        }
-        input:focus {
-            border-color: #22c55e;
-            outline: none;
-        }
-        .section-title {
-            font-size: 13px;
-            color: #cbd5e1;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-        .products-grid {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .header h1 {
+            color: #FFD700;
+            margin: 0 0 10px 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+        .header p {
+            color: #b0b0b0;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        .shop-container {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 900px;
+            width: 100%;
+        }
+        .card {
+            background: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            width: 280px;
+            text-align: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #4CAF50;
+        }
+        .card h2 {
+            margin-top: 0;
+            color: #4CAF50;
+        }
+        .price {
+            font-size: 26px;
+            font-weight: bold;
+            color: #FFEB3B;
+            margin: 15px 0;
+        }
+        .features {
+            text-align: left;
+            color: #b0b0b0;
+            font-size: 14px;
+            margin-bottom: 25px;
+            padding-left: 15px;
+            line-height: 1.6;
+        }
+        .btn-buy {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            transition: background 0.3s;
+            width: 100%;
+            text-align: center;
+        }
+        .btn-buy:hover {
+            background-color: #43A047;
+        }
+
+        /* Seção de Suporte e Instruções */
+        .support-section {
+            margin-top: 30px;
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            border: 1px solid #333;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        .support-section h3 {
+            color: #25D366;
+            margin-top: 0;
+            font-size: 1.4rem;
+        }
+        .support-section p {
+            color: #b0b0b0;
+            font-size: 14px;
+            line-height: 1.6;
             margin-bottom: 20px;
         }
-        .product-card {
-            background: #1a2234;
-            border: 2px solid #283548;
-            border-radius: 10px;
-            padding: 12px 16px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.2s ease;
-        }
-        .product-card:hover {
-            border-color: #3b82f6;
-            background: #1e293b;
-        }
-        .product-card.selected {
-            border-color: #22c55e;
-            background: rgba(34, 197, 94, 0.05);
-        }
-        .product-info .p-name {
-            font-weight: bold;
-            font-size: 14px;
-            color: #fff;
-        }
-        .product-info .p-desc {
-            font-size: 11px;
-            color: #94a3b8;
-            margin-top: 2px;
-        }
-        .product-price {
-            font-weight: bold;
-            font-size: 15px;
-            color: #22c55e;
-        }
-        .btn {
-            background-color: #22c55e;
-            color: white;
-            border: none;
-            padding: 14px;
-            width: 100%;
+        .support-section strong { color: #fff; }
+
+        /* Caixa de Aviso de Tempo de Espera */
+        .warning-box {
+            background: #2a2212;
+            border: 1px solid #ff9800;
+            padding: 15px;
             border-radius: 8px;
-            font-weight: bold;
-            cursor: pointer;
-            font-size: 15px;
-            transition: background 0.2s;
-            box-shadow: 0 4px 12px rgba(34, 197, 94, 0.3);
-        }
-        .btn:hover { background-color: #16a34a; }
-        .whatsapp-btn { 
-            background-color: #25d366; 
-            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
-            margin-top: 15px;
-        }
-        .whatsapp-btn:hover { background-color: #1ebe5d; }
-        
-        .checkout-box {
-            background: #0b0f19;
-            border: 1px dashed #334155;
-            padding: 18px;
-            border-radius: 10px;
-            margin-top: 20px;
-            display: none;
-        }
-        .pix-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #161e2e;
-            padding: 10px 12px;
-            border-radius: 6px;
-            margin-top: 8px;
-            font-family: monospace;
+            margin-bottom: 20px;
+            color: #ffb74d;
             font-size: 13px;
-            border: 1px solid #283548;
+            line-height: 1.5;
+            text-align: left;
         }
-        .copy-btn {
-            background: #3b82f6;
+        .warning-box strong { color: #ffa726; }
+        
+        /* Destaque do Comando no Jogo */
+        .command-box {
+            background: #121212;
+            border: 2px dashed #4CAF50;
+            padding: 12px;
+            font-size: 16px;
+            font-family: monospace;
+            color: #FFEB3B;
+            margin: 15px 0;
+            border-radius: 6px;
+        }
+
+        .btn-whatsapp {
+            background-color: #25D366;
             color: white;
             border: none;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 12px;
-            cursor: pointer;
+            padding: 14px 20px;
+            font-size: 16px;
             font-weight: bold;
-            transition: background 0.2s;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: background 0.3s;
+            width: 100%;
         }
-        .copy-btn:hover { background: #2563eb; }
-        .secure-badge {
-            text-align: center;
-            font-size: 11px;
-            color: #64748b;
-            margin-top: 20px;
+        .btn-whatsapp:hover {
+            background-color: #20ba5a;
         }
     </style>
 </head>
 <body>
 
-<div class="container">
     <div class="header">
-        <h1>💎 MCNetwork</h1>
-        <div class="subtitle">MultiCraft • Loja Oficial</div>
+        <h1>MCNETWORK</h1>
+        <p>Adquira seu VIP e jogue com vantagens exclusivas!</p>
     </div>
-    
-    <div class="content">
-        <label>👤 Nick no Minecraft:</label>
-        <input type="text" id="jogador" placeholder="Ex: Notch">
-        
-        <label>✉️ E-mail:</label>
-        <input type="email" id="email" placeholder="seu@email.com">
-        
-        <label>📱 WhatsApp (com DDD):</label>
-        <input type="text" id="telefone" placeholder="(45) 99999-9999">
 
-        <div class="section-title">⚡ Escolha o Produto:</div>
-        <div class="products-grid">
-            <div class="product-card selected" onclick="selecionarProduto(this, 'VIP (30 Dias) - R$ 25,00')">
-                <div class="product-info">
-                    <div class="p-name">⭐ VIP (30 Dias)</div>
-                    <div class="p-desc">Kit exclusivo, tags e comandos</div>
-                </div>
-                <div class="product-price">R$ 25,00</div>
+    <div class="shop-container">
+        <!-- VIP COMUM -->
+        <div class="card">
+            <div>
+                <h2>VIP [VIP]</h2>
+                <div class="price">R$ 25,00</div>
+                <ul class="features">
+                    <li>30 Dias de duração</li>
+                    <li>Kit VIP exclusivo</li>
+                    <li>Tag [VIP] no chat</li>
+                    <li>Comandos especiais</li>
+                </ul>
             </div>
-
-            <div class="product-card" onclick="selecionarProduto(this, 'VIPMASTER (30 Dias) - R$ 50,00')">
-                <div class="product-info">
-                    <div class="p-name">👑 VIPMASTER (30 Dias)</div>
-                    <div class="p-desc">Benefícios máximos e fly</div>
-                </div>
-                <div class="product-price">R$ 50,00</div>
-            </div>
-
-            <div class="product-card" onclick="selecionarProduto(this, 'Desbanimento (Unban) - R$ 20,00')">
-                <div class="product-info">
-                    <div class="p-name">🛡️ Desbanimento (Unban)</div>
-                    <div class="p-desc">Remoção de punição</div>
-                </div>
-                <div class="product-price">R$ 20,00</div>
-            </div>
+            <a href="https://mpago.la/28r7j3e" class="btn-buy" target="_blank">Comprar VIP</a>
         </div>
 
-        <button class="btn" onclick="gerarPix()">Gerar Chave Pix para Pagamento</button>
+        <!-- VIP MASTER -->
+        <div class="card">
+            <div>
+                <h2>VIP [VIPMASTER]</h2>
+                <div class="price">R$ 50,00</div>
+                <ul class="features">
+                    <li>30 Dias de duração</li>
+                    <li>Kit VIPMASTER exclusivo</li>
+                    <li>Tag [VIPMASTER] em destaque</li>
+                    <li>Todos os benefícios liberados</li>
+                </ul>
+            </div>
+            <a href="https://mpago.la/1jZh4KX" class="btn-buy" target="_blank">Comprar VIPMASTER</a>
+        </div>
+    </div>
 
-        <div id="resultado" class="checkout-box">
-            <div style="font-size: 13px; color: #22c55e; font-weight: bold; margin-bottom: 8px;">✅ Pedido Gerado com Sucesso!</div>
-            <div style="font-size: 12px; color: #94a3b8; line-height: 1.5;">
-                <strong>Produto:</strong> <span id="resumoPacote" style="color: #fff;"></span><br>
-                <strong>Jogador:</strong> <span id="resumoJogador" style="color: #fff;"></span>
-            </div>
-            
-            <label style="margin-top: 12px;">Chave Pix (CPF - Nubank):</label>
-            <div class="pix-row">
-                <span id="chavePix">125.967.119-40</span>
-                <button class="copy-btn" onclick="copiarPix()">Copiar</button>
-            </div>
-            <div style="font-size: 11px; color: #94a3b8; margin-top: 6px;">Favorecido: MATHEUS HEINRINCH HEIN</div>
-            
-            <button class="btn whatsapp-btn" onclick="enviarWhatsApp()">📲 Enviar Comprovante no WhatsApp</button>
+    <!-- CAIXA DE SUPORTE E ORIENTAÇÕES -->
+    <div class="support-section">
+        <h3>Como receber seu VIP?</h3>
+        
+        <!-- Aviso de Tempo de Espera -->
+        <div class="warning-box">
+            <strong>⚠️ Atenção sobre o prazo de entrega:</strong> 
+            Como nossa equipe não fica online 24 horas por dia, a liberação das chaves é feita manualmente após a confirmação do pagamento. Pedimos um prazo de <strong>até algumas horas</strong> para o envio da sua chave. Agradecemos imensamente pela sua compreensão e paciência!
         </div>
 
-        <div class="secure-badge">🔒 Transação segura processada diretamente via Pix.</div>
-    </div>
-</div>
-
-<script>
-    let produtoSelecionado = "VIP (30 Dias) - R$ 25,00";
-
-    function selecionarprodutoCard(elemento, nomeProduto) {
-        // Mantido para compatibilidade
-    }
-
-    function selecionarProduto(elemento, nome) {
-        document.querySelectorAll('.product-card').forEach(card => card.classList.remove('selected'));
-        elemento.classList.add('selected');
-        produtoSelecionado = nome;
-    }
-
-    function gerarPix() {
-        let jogador = document.getElementById('jogador').value.trim();
-        let email = document.getElementById('email').value.trim();
-        let telefone = document.getElementById('telefone').value.trim();
-
-        if(!jogador || !email || !telefone) {
-            alert('Por favor, preencha todos os campos (Nick, E-mail e Telefone)!');
-            return;
-        }
-
-        document.getElementById('resumoJogador').innerText = jogador;
-        document.getElementById('resumoPacote').innerText = produtoSelecionado;
-        document.getElementById('resultado').style.display = 'block';
-    }
-
-    function copiarPix() {
-        let chave = document.getElementById('chavePix').innerText;
-        navigator.clipboard.writeText(chave).then(() => {
-            let btn = document.querySelector('.copy-btn');
-            btn.innerText = 'Copiado!';
-            btn.style.background = '#16a34a';
-            setTimeout(() => {
-                btn.innerText = 'Copiar';
-                btn.style.background = '#3b82f6';
-            }, 2000);
-        });
-    }
-
-    function enviarWhatsApp() {
-        let jogador = document.getElementById('jogador').value;
-        let email = document.getElementById('email').value;
-
-        let mensagem = `Olá! Fiz o pagamento via PIX no MCNetwork (MultiCraft).\n\n*Nick:* ${jogador}\n*E-mail:* ${email}\n*Produto:* ${produtoSelecionado}\n\nSegue o meu comprovante:`;
-        let linkWpp = `https://wa.me/5545999364591?text=` + encodeURIComponent(mensagem);
+        <p>
+            1. Realize o pagamento pelo link do Mercado Pago.<br>
+            2. Envie o comprovante no nosso WhatsApp para agilizar.<br>
+            3. Assim que receber sua chave, entre no servidor e digite:
+        </p>
         
-        window.open(linkWpp, '_blank');
-    }
-</script>
+        <!-- Comando em Destaque -->
+        <div class="command-box">
+            /usekey [sua_chave]
+        </div>
+        
+        <p style="font-size: 13px; color: #888; margin-bottom: 20px;">
+            Substitua <code>[sua_chave]</code> pelo código que enviaremos para você.
+        </p>
+
+        <!-- Botão do WhatsApp -->
+        <a href="https://wa.me/5545999364591?text=Ol%C3%A1!%20Acabei%20de%20realizar%20o%20pagamento%20do%20VIP%20no%20site%20da%20MCNETWORK.%20Segue%20o%20comprovante:" class="btn-whatsapp" target="_blank">
+            💬 Enviar Comprovante no WhatsApp
+        </a>
+    </div>
 
 </body>
 </html>
